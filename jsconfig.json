@@ -4,7 +4,8 @@
     "paths": {
       "components/*": ["components/*"],
       "data/*": ["data/*"],
-      "styles/*": ["styles/*"]
+      "styles/*": ["styles/*"],
+      "helpers/*": ["helpers/*"]
     }
   },
   "include": ["src"]
