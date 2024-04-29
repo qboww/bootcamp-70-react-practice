@@ -1,20 +1,24 @@
 import { useState } from 'react';
+import { PointsOptions, PointsStatistic } from 'components';
+import { Natification } from '../../components';
 
 export const Points = () => {
   const [points, setPoints] = useState({ one: 0, two: 0, three: 0, four: 0, five: 0 });
   const handelClick = (point, value) => {
     setPoints(prev => ({ ...prev, [point]: prev[point] + value }));
   };
-  console.log(points);
+  const countTotalPoints = () => {
+    return Object.values(points).reduce((acc, value) => acc + value, 0);
+  };
+  const total = countTotalPoints();
   return (
     <div>
-      <ul>
-        {Object.keys(points).map((el, index) => (
-          <li key={el}>
-            <button onClick={() => handelClick(el, index + 1)}>{el}</button>
-          </li>
-        ))}
-      </ul>
+      <PointsOptions points={Object.keys(points)} onLeavePoint={handelClick} />
+      {total > 0 ? (
+        <PointsStatistic total={total} statistics={Object.entries(points)} />
+      ) : (
+        <Natification text="No points" />
+      )}
     </div>
   );
 };
