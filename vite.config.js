@@ -13,6 +13,7 @@ export default defineConfig({
       data: '/src/data',
       styles: '/src/styles',
       helpers: '/src/helpers',
+      tabs: '/src/tabs',
     },
   },
 });

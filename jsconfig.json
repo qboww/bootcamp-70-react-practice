@@ -5,7 +5,8 @@
       "components/*": ["components/*"],
       "data/*": ["data/*"],
       "styles/*": ["styles/*"],
-      "helpers/*": ["helpers/*"]
+      "helpers/*": ["helpers/*"],
+      "tabs/*": ["tabs/*"]
     }
   },
   "include": ["src"]
