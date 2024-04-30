@@ -27,3 +27,12 @@
 .five {
   background-color: beige;
 }
+.btn_reset {
+  display: block;
+  margin: 0 auto 30px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
