@@ -14,6 +14,7 @@ export default defineConfig({
       styles: '/src/styles',
       helpers: '/src/helpers',
       tabs: '/src/tabs',
+      hooks: '/src/hooks',
     },
   },
 });

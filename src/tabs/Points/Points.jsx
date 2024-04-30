@@ -1,16 +1,12 @@
-import { useState } from 'react';
 import { PointsOptions, PointsStatistic } from 'components';
 import { Natification } from '../../components';
-import { useEffect } from 'react';
+
+import { useLocalStorage } from 'hooks/useLocalStorage';
 
 const initialState = { one: 0, two: 0, three: 0, four: 0, five: 0 };
 
 export const Points = () => {
-  const [points, setPoints] = useState(() => JSON.parse(window.localStorage.getItem('points')) || initialState);
-
-  useEffect(() => {
-    window.localStorage.setItem('points', JSON.stringify(points));
-  }, [points]);
+  const [points, setPoints] = useLocalStorage('points', initialState);
 
   const handelClick = (point, value) => {
     setPoints(prev => ({ ...prev, [point]: prev[point] + value }));
