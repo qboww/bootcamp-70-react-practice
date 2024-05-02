@@ -21,6 +21,7 @@ export const Form = ({ onSubmit }) => {
       });
     }
     onSubmit(text);
+    setText('');
   };
   return (
     <form onSubmit={handleSubmit}>
