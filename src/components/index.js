@@ -7,3 +7,4 @@ export * from './PointsOptions/PointsOptions';
 export * from './PointsStatistic/PointsStatistic';
 export * from './Natification/Natification';
 export * from './Form/Form';
+export * from './TodoList/TodoList';
