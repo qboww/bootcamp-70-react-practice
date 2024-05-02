@@ -1,5 +1,5 @@
 import { PointsOptions, PointsStatistic } from 'components';
-import { Natification } from '../../components';
+import { Notification } from '../../components';
 
 import { useLocalStorage } from 'hooks/useLocalStorage';
 
@@ -29,7 +29,7 @@ export const Points = () => {
       {total > 0 ? (
         <PointsStatistic total={total} statistics={Object.entries(points)} />
       ) : (
-        <Natification text="No points" />
+        <Notification text="No points" />
       )}
     </div>
   );
