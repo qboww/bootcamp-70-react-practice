@@ -1,0 +1,17 @@
+.searchInput {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 0;
+  margin-bottom: 10px;
+}
+.searchForm {
+  width: 200px;
+  margin: 0 auto;
+}
+.errorMsg {
+  color: red;
+  text-align: center;
+}
+.searchBtn {
+  color: blue;
+}
