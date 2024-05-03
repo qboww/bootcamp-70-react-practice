@@ -14,8 +14,9 @@ export const SearchForm = ({ onSubmit }) => {
         text: '',
       }}
       validationSchema={validationSchema}
-      onSubmit={values => {
+      onSubmit={(values, actions) => {
         onSubmit(values);
+        actions.resetForm();
       }}
     >
       {({ errors, touched }) => {
