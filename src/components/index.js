@@ -6,5 +6,5 @@ export * from './Heading/Heading';
 export * from './PointsOptions/PointsOptions';
 export * from './PointsStatistic/PointsStatistic';
 export * from './Notification/Notification';
-export * from './Form/Form';
+export * from './SearchForm/SearchForm';
 export * from './TodoList/TodoList';
