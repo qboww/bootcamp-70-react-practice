@@ -31,7 +31,7 @@ export const Todos = () => {
   const filteredTodo = getFilteredTodo();
 
   return (
-    <div>
+    <>
       <SearchForm onSubmit={onSubmit} />
       {todos.length === 0 && <Notification text="All tasks are completed! 😉" />}
       {todos.length > 0 && (
@@ -44,6 +44,6 @@ export const Todos = () => {
           )}
         </>
       )}
-    </div>
+    </>
   );
 };
