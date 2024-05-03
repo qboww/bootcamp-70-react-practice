@@ -1,0 +1,9 @@
+.filterHeading {
+  text-align: center;
+}
+
+.filterInput {
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 20px;
+}

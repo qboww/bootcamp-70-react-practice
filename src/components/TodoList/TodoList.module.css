@@ -1,0 +1,31 @@
+.todoList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.todoItem {
+  width: 150px;
+}
+
+.box {
+  position: relative;
+  padding: 20px;
+  background-color: var(--color-light);
+  border-radius: 8px;
+  box-shadow: var(--shadow-regular);
+}
+
+.todoHeading {
+  font-weight: 700;
+  text-align: center;
+  font-size: var(--font-medium);
+}
+
+.todoButton {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red;
+}
