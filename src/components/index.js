@@ -9,3 +9,4 @@ export * from './Notification/Notification';
 export * from './SearchForm/SearchForm';
 export * from './TodoList/TodoList';
 export * from './Filter/Filter';
+export * from './ImageGallery/ImageGallery';
