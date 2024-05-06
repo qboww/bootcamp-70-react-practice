@@ -2,7 +2,7 @@ import { Container, Section } from 'components';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import { Points, Props, Todos } from './tabs';
+import { Images, Points, Props, Todos } from './tabs';
 
 function App() {
   return (
@@ -10,10 +10,15 @@ function App() {
       <Container>
         <Tabs>
           <TabList>
+            <Tab>Images</Tab>
             <Tab>Todos</Tab>
             <Tab>Points</Tab>
             <Tab>Props</Tab>
           </TabList>
+
+          <TabPanel>
+            <Images />
+          </TabPanel>
 
           <TabPanel>
             <Todos />
