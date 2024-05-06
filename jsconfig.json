@@ -6,7 +6,8 @@
       "data/*": ["data/*"],
       "styles/*": ["styles/*"],
       "helpers/*": ["helpers/*"],
-      "tabs/*": ["tabs/*"]
+      "tabs/*": ["tabs/*"],
+      "service/*": ["service/*"]
     }
   },
   "include": ["src"]
