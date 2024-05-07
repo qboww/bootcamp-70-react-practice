@@ -29,5 +29,9 @@
 }
 
 .info {
-  color: crimson;
+  color: yellow;
+}
+
+.error {
+  color: tomato;
 }
