@@ -12,3 +12,5 @@ export * from './Filter/Filter';
 export * from './ImageGallery/ImageGallery';
 export * from './Loader/Loader';
 export * from './LoadMoreBtn/LoadMoreBtn';
+export * from './ModalImage/ModalImage';
+export * from './BackDrop/BackDrop';
