@@ -1,4 +1,4 @@
-import { SearchForm, ImageGallery, Loader, Heading, LoadMoreBtn } from 'components';
+import { SearchForm, ImageGallery, Loader, Heading, LoadMoreBtn, ModalImage } from 'components';
 import { useEffect, useState } from 'react';
 import { getImages } from 'service/imagesAPI';
 
@@ -10,6 +10,8 @@ export const Images = () => {
   const [showBtn, setShowBtn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(false);
+
+  const [largeImage, setLargeImage] = useState('');
 
   useEffect(() => {
     if (!query) return;
@@ -28,6 +30,10 @@ export const Images = () => {
       .finally(() => setIsLoading(false));
   }, [query, page]);
 
+  const openModal = largeImage => {
+    setLargeImage(largeImage);
+  };
+
   const onSubmit = ({ text }) => {
     setQuery(text);
     setIsEmpty(false);
@@ -40,11 +46,12 @@ export const Images = () => {
   return (
     <>
       <SearchForm onSubmit={onSubmit} icon="search" />
-      {images.length > 0 && <ImageGallery images={images} />}
+      {images.length > 0 && <ImageGallery openModal={openModal} images={images} />}
       {isEmpty && <Heading title={'Nothing in search'} info top />}
       {error && <Heading title={'Something went wrong... Try again later.'} error top />}
       {showBtn && <LoadMoreBtn onClick={handleLoadMore} />}
       {isLoading && <Loader />}
+      {largeImage && <ModalImage largeImage={largeImage} closeModal={openModal} />}
     </>
   );
 };
