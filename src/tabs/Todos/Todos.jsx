@@ -32,7 +32,7 @@ export const Todos = () => {
 
   return (
     <>
-      <SearchForm onSubmit={onSubmit} />
+      <SearchForm onSubmit={onSubmit} icon="create" />
       {todos.length === 0 && <Notification text="All tasks are completed! 😉" />}
       {todos.length > 0 && (
         <>

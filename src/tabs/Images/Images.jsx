@@ -1,7 +1,6 @@
-import { SearchForm, ImageGallery, Loader } from 'components';
+import { SearchForm, ImageGallery, Loader, Heading, LoadMoreBtn } from 'components';
 import { useEffect, useState } from 'react';
 import { getImages } from 'service/imagesAPI';
-import { Heading } from '../../components';
 
 export const Images = () => {
   const [query, setQuery] = useState('');
@@ -10,6 +9,7 @@ export const Images = () => {
   const [isEmpty, setIsEmpty] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (!query) return;
@@ -24,6 +24,7 @@ export const Images = () => {
         setImages(prev => [...prev, ...photos]);
         setShowBtn(page < Math.ceil(total_results / per_page));
       })
+      .catch(() => setError(true))
       .finally(() => setIsLoading(false));
   }, [query, page]);
 
@@ -38,14 +39,11 @@ export const Images = () => {
 
   return (
     <>
-      <SearchForm onSubmit={onSubmit} />
+      <SearchForm onSubmit={onSubmit} icon="search" />
       {images.length > 0 && <ImageGallery images={images} />}
       {isEmpty && <Heading title={'Nothing in search'} info top />}
-      {showBtn && (
-        <button onClick={handleLoadMore} type="button">
-          Load More
-        </button>
-      )}
+      {error && <Heading title={'Something went wrong... Try again later.'} error top />}
+      {showBtn && <LoadMoreBtn onClick={handleLoadMore} />}
       {isLoading && <Loader />}
     </>
   );
