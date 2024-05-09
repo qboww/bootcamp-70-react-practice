@@ -14,6 +14,11 @@ export const Header = () => {
           <nav>
             <ul className={s.list}>
               <li>
+                <NavLink className={activeLink} to="/">
+                  Home
+                </NavLink>
+              </li>
+              <li>
                 <NavLink className={activeLink} to="/images">
                   Images
                 </NavLink>
@@ -31,6 +36,11 @@ export const Header = () => {
               <li>
                 <NavLink className={activeLink} to="/todos">
                   Todos
+                </NavLink>
+              </li>
+              <li>
+                <NavLink className={activeLink} to="/countries">
+                  Countries
                 </NavLink>
               </li>
             </ul>
