@@ -3,6 +3,7 @@ import { Header } from 'components';
 import { Images, Points, Props, Todos } from './pages';
 import { Route, Routes } from 'react-router-dom';
 import { Home } from 'pages/Home/Home';
+import { Countries } from 'pages/Countries/Countries';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/points" element={<Points />} />
         <Route path="/props" element={<Props />} />
         <Route path="/todos" element={<Todos />} />
+        <Route path="/countries" element={<Countries />} />
       </Routes>
       {/* <Routes>
         <Route path="/" element={<Header />}>

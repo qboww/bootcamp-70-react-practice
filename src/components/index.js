@@ -15,3 +15,4 @@ export * from './LoadMoreBtn/LoadMoreBtn';
 export * from './ModalImage/ModalImage';
 export * from './BackDrop/BackDrop';
 export * from './Header/Header';
+export * from './CountriesList/CountriesList';
