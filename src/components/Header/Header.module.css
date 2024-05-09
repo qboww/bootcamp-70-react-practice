@@ -1,0 +1,12 @@
+.header {
+  padding: 20px 0;
+}
+.list {
+  display: flex;
+  gap: 10px;
+}
+
+.active {
+  color: blueviolet;
+  text-decoration: underline;
+}

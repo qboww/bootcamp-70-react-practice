@@ -6,7 +6,7 @@
       "data/*": ["data/*"],
       "styles/*": ["styles/*"],
       "helpers/*": ["helpers/*"],
-      "tabs/*": ["tabs/*"],
+      "pages/*": ["pages/*"],
       "service/*": ["service/*"]
     }
   },
