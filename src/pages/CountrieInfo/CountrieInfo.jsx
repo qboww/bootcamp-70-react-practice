@@ -1,25 +1,26 @@
 import { Container, Heading, Loader, Section } from 'components/index';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { getCountryById } from 'service/countriesAPI';
-
-export const CountrieInfo = () => {
+const CountrieInfo = () => {
   const [country, setCountry] = useState(null);
+  const location = useLocation();
+  const goBack = useRef(location.state ?? '/countries');
 
   const { countryId } = useParams();
-  const [error, setError] = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => {
     const getData = async () => {
-        setLoading(true)
-        try{
-            const data = await getCountryById(countryId);
-            setCountry(data);
-        } catch(err) {
-            setError(err.message)
-        }finally {
-            setLoading(false)
-        }
+      setLoading(true);
+      try {
+        const data = await getCountryById(countryId);
+        setCountry(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
     };
     getData();
   }, [countryId]);
@@ -28,8 +29,9 @@ export const CountrieInfo = () => {
     <>
       <Section>
         <Container>
-        {loading && <Loader />}
-        {error && <Heading error title={error} />}
+          <Link to={goBack.current}>Go Back </Link>
+          {loading && <Loader />}
+          {error && <Heading error title={error} />}
           {country && (
             <div>
               <img src={country.flag} alt={country.country} />
@@ -44,3 +46,4 @@ export const CountrieInfo = () => {
     </>
   );
 };
+export default CountrieInfo;

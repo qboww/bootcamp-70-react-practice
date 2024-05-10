@@ -1,26 +1,35 @@
 import { Header } from 'components';
+import { Suspense, lazy } from 'react';
 
-import { Images, Points, Props, Todos } from './pages';
-import { Route, Routes } from 'react-router-dom';
-import { Home } from 'pages/Home/Home';
-import { Countries } from 'pages/Countries/Countries';
-import { CountrieInfo } from 'pages/CountrieInfo/CountrieInfo';
-import { SearchCountry } from 'pages/SearchCountry/SearchCountry';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import { easyLazy } from 'helpers';
+
+const Home = lazy(() => import('pages/Home/Home'));
+const Images = lazy(() => import('pages/Images/Images'));
+const Points = lazy(() => import('pages/Points/Points'));
+const Todos = easyLazy('Todos');
+const Countries = easyLazy('Countries');
+const SearchCountry = easyLazy('SearchCountry');
+const CountrieInfo = easyLazy('CountrieInfo');
+const Props = easyLazy('Props');
 
 function App() {
   return (
     <>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/images" element={<Images />} />
-        <Route path="/points" element={<Points />} />
-        <Route path="/props" element={<Props />} />
-        <Route path="/todos" element={<Todos />} />
-        <Route path="/countries" element={<Countries />} />
-        <Route path="/searchCountry" element={<SearchCountry />} />
-        <Route path="/countries/:countryId" element={<CountrieInfo />} />
-      </Routes>
+      <Suspense fallback={'null'}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/images" element={<Images />} />
+          <Route path="/points" element={<Points />} />
+          <Route path="/props" element={<Props />} />
+          <Route path="/todos" element={<Todos />} />
+          <Route path="/countries" element={<Countries />} />
+          <Route path="/searchCountry" element={<SearchCountry />} />
+          <Route path="/countries/:countryId" element={<CountrieInfo />} />
+          <Route path="*" element={<Navigate to="/" />} />
+        </Routes>
+      </Suspense>
       {/* <Routes>
         <Route path="/" element={<Header />}>
           <Route index element={<Home />} />

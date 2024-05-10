@@ -2,7 +2,7 @@ import { BlogCard, Heading, StatisticsList } from 'components/index';
 import article from 'data/article.json';
 import stats from 'data/stats.json';
 
-export const Props = () => {
+const Props = () => {
   return (
     <>
       <Heading title="Blog Card" bottom />
@@ -12,3 +12,5 @@ export const Props = () => {
     </>
   );
 };
+
+export default Props;

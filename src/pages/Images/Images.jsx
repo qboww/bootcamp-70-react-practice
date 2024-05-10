@@ -2,7 +2,7 @@ import { SearchForm, ImageGallery, Loader, Heading, LoadMoreBtn, ModalImage } fr
 import { useEffect, useState } from 'react';
 import { getImages } from 'service/imagesAPI';
 
-export const Images = () => {
+const Images = () => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [images, setImages] = useState([]);
@@ -55,3 +55,5 @@ export const Images = () => {
     </>
   );
 };
+
+export default Images;
