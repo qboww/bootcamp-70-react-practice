@@ -43,6 +43,11 @@ export const Header = () => {
                   Countries
                 </NavLink>
               </li>
+              <li>
+                <NavLink className={activeLink} to="/searchCountry">
+                  Search Country
+                </NavLink>
+              </li>
             </ul>
           </nav>
         </Container>

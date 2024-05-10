@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { Home } from 'pages/Home/Home';
 import { Countries } from 'pages/Countries/Countries';
 import { CountrieInfo } from 'pages/CountrieInfo/CountrieInfo';
+import { SearchCountry } from 'pages/SearchCountry/SearchCountry';
 
 function App() {
   return (
@@ -17,8 +18,8 @@ function App() {
         <Route path="/props" element={<Props />} />
         <Route path="/todos" element={<Todos />} />
         <Route path="/countries" element={<Countries />} />
+        <Route path="/searchCountry" element={<SearchCountry />} />
         <Route path="/countries/:countryId" element={<CountrieInfo />} />
-
       </Routes>
       {/* <Routes>
         <Route path="/" element={<Header />}>
