@@ -1,4 +1,4 @@
-import { Container, CountriesList, Heading, Loader, Section } from 'components/index';
+import { Container, CountriesList, Heading, Loader, Section } from 'components';
 import { useEffect, useState } from 'react';
 import { getCountries } from 'service/countriesAPI';
 
@@ -10,6 +10,7 @@ export const Countries = () => {
     const getData = async () => {
       try {
         setLoading(true);
+        setError(false);
         const data = await getCountries();
         setCountries(data);
       } catch (err) {
