@@ -6,7 +6,7 @@ export const transformCountriesData = data => {
       flag: png,
       population,
       languages: Object.values(languages),
-      capital: capital[0],
+      capital: capital ? capital[0] : '',
     };
   });
 };
