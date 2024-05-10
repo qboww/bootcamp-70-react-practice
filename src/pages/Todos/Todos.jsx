@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useState } from 'react';
 
-export const Todos = () => {
+const Todos = () => {
   const [todos, setTodos] = useLocalStorage('todos', []);
   const [filter, setFilter] = useState('');
 
@@ -47,3 +47,5 @@ export const Todos = () => {
     </>
   );
 };
+
+export default Todos;

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getCountryByRegion } from 'service/countriesAPI';
 
-export const SearchCountry = () => {
+const SearchCountry = () => {
   const [searchParams, setSearchPArams] = useSearchParams();
   const [countries, setCoutries] = useState([]);
   const [error, setError] = useState(false);
@@ -40,3 +40,5 @@ export const SearchCountry = () => {
     </Section>
   );
 };
+
+export default SearchCountry;

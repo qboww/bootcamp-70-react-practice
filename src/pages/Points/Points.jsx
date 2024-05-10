@@ -5,7 +5,7 @@ import { useLocalStorage } from 'hooks/useLocalStorage';
 
 const initialState = { one: 0, two: 0, three: 0, four: 0, five: 0 };
 
-export const Points = () => {
+const Points = () => {
   const [points, setPoints] = useLocalStorage('points', initialState);
 
   const handelClick = (point, value) => {
@@ -34,3 +34,5 @@ export const Points = () => {
     </div>
   );
 };
+
+export default Points;
