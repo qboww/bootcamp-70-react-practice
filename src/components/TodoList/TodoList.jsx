@@ -1,7 +1,10 @@
+import { useSelector } from 'react-redux';
 import s from './TodoList.module.css';
 import { FaTrash } from 'react-icons/fa';
+import { selectToDos } from 'reduxStore/selectors';
 
-export const TodoList = ({ todos, handleDelete }) => {
+export const TodoList = ({ handleDelete }) => {
+  const todos = useSelector(selectToDos);
   return (
     <ul className={s.todoList}>
       {todos.map(item => (

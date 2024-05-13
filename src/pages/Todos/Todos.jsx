@@ -3,13 +3,18 @@ import { nanoid } from 'nanoid';
 
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 import { useState } from 'react';
+import { addTodo } from 'reduxStore/actions';
+import { useDispatch } from 'react-redux';
 
 const Todos = () => {
+  const dispatch = useDispatch();
   const [todos, setTodos] = useLocalStorage('todos', []);
   const [filter, setFilter] = useState('');
 
   const onSubmit = ({ text }) => {
     const toDo = { text, id: nanoid() };
+    const action = addTodo(toDo);
+    dispatch(action);
     setTodos([...todos, toDo]);
   };
 
