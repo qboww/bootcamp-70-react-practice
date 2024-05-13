@@ -7,7 +7,8 @@
       "styles/*": ["styles/*"],
       "helpers/*": ["helpers/*"],
       "pages/*": ["pages/*"],
-      "service/*": ["service/*"]
+      "service/*": ["service/*"],
+      "reduxStore/*": ["reduxStore/*"]
     }
   },
   "include": ["src"]
