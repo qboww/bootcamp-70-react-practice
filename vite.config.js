@@ -16,6 +16,7 @@ export default defineConfig({
       pages: '/src/pages',
       hooks: '/src/hooks',
       service: '/src/service',
+      reduxStore: '/src/reduxStore',
     },
   },
 });
