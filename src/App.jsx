@@ -7,6 +7,7 @@ import { easyLazy } from 'helpers';
 const Home = lazy(() => import('pages/Home/Home'));
 const Images = lazy(() => import('pages/Images/Images'));
 const Points = lazy(() => import('pages/Points/Points'));
+
 const Todos = easyLazy('Todos');
 const Countries = easyLazy('Countries');
 const SearchCountry = easyLazy('SearchCountry');

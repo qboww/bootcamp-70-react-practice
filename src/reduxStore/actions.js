@@ -1,4 +1,4 @@
-import { ADD_TODO, DELETE_TODO } from './constants';
+import { ADD_TODO, DELETE_TODO, FILTER_TODO } from './constants';
 
 export const addTodo = payload => {
   return {
@@ -10,6 +10,12 @@ export const addTodo = payload => {
 export const deleteTodo = payload => {
   return {
     type: DELETE_TODO,
+    payload,
+  };
+};
+export const filterTodo = payload => {
+  return {
+    type: FILTER_TODO,
     payload,
   };
 };
