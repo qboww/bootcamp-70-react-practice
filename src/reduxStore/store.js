@@ -11,6 +11,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { toDosReducer } from './toDoSlice';
+import { pointsReducer } from './pointsSlice';
 import { filterReducer } from './filterSlice';
 
 const persistConfig = {
@@ -19,7 +20,11 @@ const persistConfig = {
   storage,
   blacklist: ['filter'],
 };
-const rootReducer = combineReducers({ todos: toDosReducer, filter: filterReducer });
+const rootReducer = combineReducers({
+  todos: toDosReducer,
+  filter: filterReducer,
+  points: pointsReducer,
+});
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
