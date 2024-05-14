@@ -1,28 +1,25 @@
 import { PointsOptions, PointsStatistic } from 'components';
 import { Notification } from '../../components';
 
-import { useLocalStorage } from 'hooks/useLocalStorage';
+import { useSelector } from 'react-redux';
+import { selectPoints } from 'reduxStore/selectors';
 
-const initialState = { one: 0, two: 0, three: 0, four: 0, five: 0 };
 
 const Points = () => {
-  const [points, setPoints] = useLocalStorage('points', initialState);
+  const points = useSelector(selectPoints)
+  
 
-  const handelClick = (point, value) => {
-    setPoints(prev => ({ ...prev, [point]: prev[point] + value }));
-  };
   const countTotalPoints = () => {
     return Object.values(points).reduce((acc, value) => acc + value, 0);
   };
   const resetPoints = () => {
-    setPoints(initialState);
+    // setPoints(initialState);
   };
   const total = countTotalPoints();
   return (
     <div>
       <PointsOptions
         points={Object.keys(points)}
-        onLeavePoint={handelClick}
         total={total}
         resetPoints={resetPoints}
       />
