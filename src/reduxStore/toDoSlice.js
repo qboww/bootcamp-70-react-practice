@@ -1,17 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-const initialState = {
-  todos: [],
-};
-
+const initialState = [];
 const toDoSlice = createSlice({
   name: 'toDos',
   initialState,
   reducers: {
     addTodo: (state, { payload }) => {
-      state.todos.push(payload);
+      return [...state, payload];
     },
     deleteTodo: (state, { payload }) => {
-      state.todos = state.todos.filter(todo => todo.id !== payload);
+      return state.filter(todo => todo.id !== payload);
     },
   },
 });
