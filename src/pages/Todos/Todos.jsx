@@ -1,14 +1,14 @@
 import { SearchForm, TodoList, Notification, Filter } from 'components';
 import { nanoid } from 'nanoid';
 
-import { addTodo } from 'reduxStore/actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilter, selectToDos } from 'reduxStore/selectors';
+import { addTodo } from 'reduxStore/toDoSlice';
 
 const Todos = () => {
   const dispatch = useDispatch();
   const todos = useSelector(selectToDos);
-  const filter = useSelector(selectFilter);
+  const filter = useSelector(selectFilter) || '';
   const onSubmit = ({ text }) => {
     const toDo = { text, id: nanoid() };
     dispatch(addTodo(toDo));
