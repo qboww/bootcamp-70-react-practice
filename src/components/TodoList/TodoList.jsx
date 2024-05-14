@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import s from './TodoList.module.css';
 import { FaTrash } from 'react-icons/fa';
-import { deleteTodo } from 'reduxStore/actions';
+import { deleteTodo } from 'reduxStore/toDoSlice';
 
 export const TodoList = ({ todos }) => {
   const dispatch = useDispatch();
