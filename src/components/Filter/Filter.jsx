@@ -1,5 +1,6 @@
+import { changeFilter } from 'reduxStore/filterSlice';
 import s from './Filter.module.css';
-import { filterTodo } from 'reduxStore/actions';
+
 import { useDispatch } from 'react-redux';
 
 export const Filter = () => {
@@ -11,7 +12,7 @@ export const Filter = () => {
         className={s.filterInput}
         type="text"
         onChange={e => {
-          dispatch(filterTodo(e.target.value));
+          dispatch(changeFilter(e.target.value));
         }}
       />
     </>
