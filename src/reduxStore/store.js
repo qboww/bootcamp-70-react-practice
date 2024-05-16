@@ -18,7 +18,7 @@ const persistConfig = {
   key: 'root',
   version: 1,
   storage,
-  blacklist: ['filter'],
+  blacklist: ['filter', 'todos'],
 };
 const rootReducer = combineReducers({
   todos: toDosReducer,

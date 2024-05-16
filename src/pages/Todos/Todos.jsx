@@ -1,18 +1,24 @@
 import { SearchForm, TodoList, Notification, Filter } from 'components';
-import { nanoid } from 'nanoid';
+import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
+import { addTodoThunk, fetchTodosThunk } from 'reduxStore/operations';
 import { selectFilter, selectToDos } from 'reduxStore/selectors';
-import { addTodo } from 'reduxStore/toDoSlice';
 
 const Todos = () => {
   const dispatch = useDispatch();
   const todos = useSelector(selectToDos);
+  console.log(todos);
+
+  useEffect(() => {
+    dispatch(fetchTodosThunk())
+  }, [dispatch])
+
   const filter = useSelector(selectFilter) || '';
   const onSubmit = ({ text }) => {
-    const toDo = { text, id: nanoid() };
-    dispatch(addTodo(toDo));
+    dispatch(addTodoThunk({ text }));
   };
+
 
   const getFilteredTodo = () => {
     return todos.filter(({ text }) => text.toLowerCase().includes(filter.toLowerCase()));
