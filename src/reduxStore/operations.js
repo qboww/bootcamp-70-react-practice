@@ -21,3 +21,29 @@ export const addTodoThunk = createAsyncThunk('todos/addTodo', async (todo, thunk
     return thunkApi.rejectWithValue(err.message);
   }
 });
+
+export const deleteTodoThunk = createAsyncThunk('todos/delTodo', async (todoId, thunkApi) => {
+  try {
+    const { data } = await instance.delete(`todos/${todoId}`);
+    return data;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.message);
+  }
+});
+
+export const deleteAllTodosThunk = createAsyncThunk('todos/delAllTodos', async (_, thunkApi) => {
+  const state = thunkApi.getState();
+  console.log(state);
+  const todos = state.todos.items;
+
+  try {
+    const promises = todos.map(async item => {
+      const { data } = await instance.delete(`todos/${item.id}`);
+      return data.id;
+    });
+
+    return Promise.all(promises);
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.message);
+  }
+});
