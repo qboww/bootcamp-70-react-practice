@@ -1,24 +1,24 @@
-import { SearchForm, TodoList, Notification, Filter } from 'components';
+import { SearchForm, TodoList, Notification, Filter, Loader, Heading } from 'components';
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodoThunk, fetchTodosThunk } from 'reduxStore/operations';
-import { selectFilter, selectToDos } from 'reduxStore/selectors';
+import { addTodoThunk, deleteAllTodosThunk, fetchTodosThunk } from 'reduxStore/operations';
+import { selectError, selectFilter, selectLoading, selectToDos } from 'reduxStore/selectors';
 
 const Todos = () => {
   const dispatch = useDispatch();
   const todos = useSelector(selectToDos);
-  console.log(todos);
+  const isLoading = useSelector(selectLoading);
+  const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(fetchTodosThunk())
-  }, [dispatch])
+    dispatch(fetchTodosThunk());
+  }, [dispatch]);
 
   const filter = useSelector(selectFilter) || '';
   const onSubmit = ({ text }) => {
     dispatch(addTodoThunk({ text }));
   };
-
 
   const getFilteredTodo = () => {
     return todos.filter(({ text }) => text.toLowerCase().includes(filter.toLowerCase()));
@@ -27,7 +27,12 @@ const Todos = () => {
   return (
     <>
       <SearchForm onSubmit={onSubmit} icon="create" />
-      {todos.length === 0 && <Notification text="All tasks are completed! 😉" />}
+      {todos.length >= 2 && (
+        <button type="button" onClick={() => dispatch(deleteAllTodosThunk())}>
+          DELETE ALL
+        </button>
+      )}
+      {todos.length === 0 && !error && <Notification text="All tasks are completed! 😉" />}
       {todos.length > 0 && (
         <>
           <Filter handleChange={() => {}} />
@@ -38,6 +43,8 @@ const Todos = () => {
           )}
         </>
       )}
+      {isLoading && <Loader />}
+      {error && <Heading title={'Something went wrong... Try again later.'} error top />}
     </>
   );
 };
