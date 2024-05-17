@@ -1,13 +1,9 @@
 import { Field, Form, Formik } from 'formik';
 import s from './SearchForm.module.css';
-import * as Yup from 'yup';
 import { IoIosCreate } from 'react-icons/io';
 import { FaSearch } from 'react-icons/fa';
 import { MdAdsClick } from 'react-icons/md';
-
-const validationSchema = Yup.object().shape({
-  text: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required'),
-});
+import { validationSchema } from 'helpers/validationSchema';
 
 const icons = { create: <IoIosCreate />, search: <FaSearch />, default: <MdAdsClick /> };
 

@@ -1,5 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addTodoThunk, deleteAllTodosThunk, deleteTodoThunk, fetchTodosThunk } from './operations';
+import {
+  addTodoThunk,
+  changeTodoThunk,
+  deleteAllTodosThunk,
+  deleteTodoThunk,
+  fetchTodosThunk,
+} from './operations';
 const initialState = {
   items: [],
   isLoading: false,
@@ -27,6 +33,10 @@ const toDoSlice = createSlice({
       })
       .addCase(deleteAllTodosThunk.fulfilled, (state, { payload }) => {
         state.items = state.items.filter(item => !payload.includes(item.id));
+      })
+      .addCase(changeTodoThunk.fulfilled, (state, { payload }) => {
+        state.items = state.items.map(item => (item.id === payload.id ? payload : item));
+        state.currentToDo = null;
       })
       .addMatcher(
         ({ type }) => type.endsWith('/pending'),
