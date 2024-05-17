@@ -4,10 +4,16 @@ const initialState = {
   items: [],
   isLoading: false,
   error: null,
+  currentToDo: null,
 };
 const toDoSlice = createSlice({
   name: 'toDos',
   initialState,
+  reducers: {
+    addCurrentToDo(state, action) {
+      state.currentToDo = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchTodosThunk.fulfilled, (state, { payload }) => {
@@ -46,3 +52,4 @@ const toDoSlice = createSlice({
 });
 
 export const toDosReducer = toDoSlice.reducer;
+export const { addCurrentToDo } = toDoSlice.actions;
