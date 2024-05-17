@@ -1,15 +1,30 @@
-import { SearchForm, TodoList, Notification, Filter, Loader, Heading } from 'components';
+import {
+  SearchForm,
+  TodoList,
+  Notification,
+  Filter,
+  Loader,
+  Heading,
+  EditToDoForm,
+} from 'components';
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodoThunk, deleteAllTodosThunk, fetchTodosThunk } from 'reduxStore/operations';
-import { selectError, selectFilter, selectLoading, selectToDos } from 'reduxStore/selectors';
+import {
+  selectCurrentToDo,
+  selectError,
+  selectFilter,
+  selectLoading,
+  selectToDos,
+} from 'reduxStore/selectors';
 
 const Todos = () => {
   const dispatch = useDispatch();
   const todos = useSelector(selectToDos);
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
+  const currentToDo = useSelector(selectCurrentToDo);
 
   useEffect(() => {
     dispatch(fetchTodosThunk());
@@ -26,7 +41,7 @@ const Todos = () => {
   const filteredTodo = getFilteredTodo();
   return (
     <>
-      <SearchForm onSubmit={onSubmit} icon="create" />
+      {!currentToDo ? <SearchForm onSubmit={onSubmit} icon="create" /> : <EditToDoForm />}
       {todos.length >= 2 && (
         <button type="button" onClick={() => dispatch(deleteAllTodosThunk())}>
           DELETE ALL
