@@ -47,3 +47,12 @@ export const deleteAllTodosThunk = createAsyncThunk('todos/delAllTodos', async (
     return thunkApi.rejectWithValue(err.message);
   }
 });
+
+export const changeTodoThunk = createAsyncThunk('todos/changeTodo', async (todo, thunkApi) => {
+  try {
+    const { data } = await instance.put(`todos/${todo.id}`, todo);
+    return data;
+  } catch (err) {
+    return thunkApi.rejectWithValue(err.message);
+  }
+});

@@ -14,7 +14,7 @@ import { addTodoThunk, deleteAllTodosThunk, fetchTodosThunk } from 'reduxStore/o
 import {
   selectCurrentToDo,
   selectError,
-  selectFilter,
+  selectFilteredTodos,
   selectLoading,
   selectToDos,
 } from 'reduxStore/selectors';
@@ -25,20 +25,15 @@ const Todos = () => {
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const currentToDo = useSelector(selectCurrentToDo);
-
+  const filteredTodo = useSelector(selectFilteredTodos);
   useEffect(() => {
     dispatch(fetchTodosThunk());
   }, [dispatch]);
 
-  const filter = useSelector(selectFilter) || '';
   const onSubmit = ({ text }) => {
     dispatch(addTodoThunk({ text }));
   };
 
-  const getFilteredTodo = () => {
-    return todos.filter(({ text }) => text.toLowerCase().includes(filter.toLowerCase()));
-  };
-  const filteredTodo = getFilteredTodo();
   return (
     <>
       {!currentToDo ? <SearchForm onSubmit={onSubmit} icon="create" /> : <EditToDoForm />}
@@ -54,7 +49,7 @@ const Todos = () => {
           {filteredTodo.length ? (
             <TodoList todos={filteredTodo} />
           ) : (
-            <Notification text={`Not find TODO ${filter}!`} />
+            <Notification text={`Not find TODO!`} />
           )}
         </>
       )}
