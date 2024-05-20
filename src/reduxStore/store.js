@@ -13,6 +13,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { toDosReducer } from './toDoSlice';
 import { pointsReducer } from './pointsSlice';
 import { filterReducer } from './filterSlice';
+import { authReducer } from './auth/authSlice';
 
 const persistConfig = {
   key: 'root',
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   todos: toDosReducer,
   filter: filterReducer,
   points: pointsReducer,
+  auth: authReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
