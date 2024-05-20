@@ -13,6 +13,7 @@ const Countries = easyLazy('Countries');
 const SearchCountry = easyLazy('SearchCountry');
 const CountrieInfo = easyLazy('CountrieInfo');
 const Props = easyLazy('Props');
+const RegisterPage = easyLazy('RegisterPage');
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
       <Suspense fallback={'null'}>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/register" element={<RegisterPage />} />
+
           <Route path="/images" element={<Images />} />
           <Route path="/points" element={<Points />} />
           <Route path="/props" element={<Props />} />
