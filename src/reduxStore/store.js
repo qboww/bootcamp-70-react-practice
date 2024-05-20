@@ -10,27 +10,31 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { toDosReducer } from './toDoSlice';
+import { toDosReducer } from './todos/toDoSlice';
 import { pointsReducer } from './pointsSlice';
 import { filterReducer } from './filterSlice';
 import { authReducer } from './auth/authSlice';
 
-const persistConfig = {
-  key: 'root',
+const persistConfigPoints = {
+  key: 'points',
   version: 1,
   storage,
-  blacklist: ['filter', 'todos'],
+};
+const persistConfigAuth = {
+  key: 'auth',
+  version: 1,
+  storage,
+  whitelist: ['token'],
 };
 const rootReducer = combineReducers({
   todos: toDosReducer,
   filter: filterReducer,
-  points: pointsReducer,
-  auth: authReducer,
+  points: persistReducer(persistConfigPoints, pointsReducer),
+  auth: persistReducer(persistConfigAuth, authReducer),
 });
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

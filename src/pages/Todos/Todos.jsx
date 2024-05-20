@@ -10,7 +10,7 @@ import {
 import { useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodoThunk, deleteAllTodosThunk, fetchTodosThunk } from 'reduxStore/operations';
+import { addTodoThunk, deleteAllTodosThunk, fetchTodosThunk } from 'reduxStore/todos/operations';
 import {
   selectCurrentToDo,
   selectError,

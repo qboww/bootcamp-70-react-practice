@@ -1,10 +1,10 @@
 import { Field, Form, Formik } from 'formik';
 import { validationSchema } from 'helpers/validationSchema';
 import { useDispatch, useSelector } from 'react-redux';
-import { changeTodoThunk } from 'reduxStore/operations';
+import { changeTodoThunk } from 'reduxStore/todos/operations';
 import { selectCurrentToDo } from 'reduxStore/selectors';
 import { MdOutlineCancel } from 'react-icons/md';
-import { addCurrentToDo } from 'reduxStore/toDoSlice';
+import { addCurrentToDo } from 'reduxStore/todos/toDoSlice';
 
 export const EditToDoForm = () => {
   const dispatch = useDispatch();
