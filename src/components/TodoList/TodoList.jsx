@@ -2,8 +2,8 @@ import { useDispatch } from 'react-redux';
 import s from './TodoList.module.css';
 import { FaTrash } from 'react-icons/fa';
 import { RiEdit2Line } from 'react-icons/ri';
-import { deleteTodoThunk } from 'reduxStore/operations';
-import { addCurrentToDo } from 'reduxStore/toDoSlice';
+import { deleteTodoThunk } from 'reduxStore/todos/operations';
+import { addCurrentToDo } from 'reduxStore/todos/toDoSlice';
 
 export const TodoList = ({ todos }) => {
   const dispatch = useDispatch();

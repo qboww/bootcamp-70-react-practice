@@ -2,11 +2,16 @@ import { NavLink } from 'react-router-dom';
 import { Container } from 'components';
 import s from './Header.module.css';
 import clsx from 'clsx';
+import { AuthNav } from 'components/AuthNav/AuthNav';
+import { UserMenu } from 'components/UserMenu/UserMenu';
+import { useSelector } from 'react-redux';
+import { selectIsLoggedIn } from 'reduxStore/auth/selectors';
 
 export const Header = () => {
   const activeLink = ({ isActive }) => {
     return clsx(isActive && s.active);
   };
+  const isLoggedIn = useSelector(selectIsLoggedIn);
   return (
     <>
       <header className={s.header}>
@@ -18,41 +23,7 @@ export const Header = () => {
                   Home
                 </NavLink>
               </li>
-              <li>
-                <NavLink className={activeLink} to="/register">
-                  Register
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={activeLink} to="/images">
-                  Images
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={activeLink} to="/points">
-                  Points
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={activeLink} to="/props">
-                  Props
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={activeLink} to="/todos">
-                  Todos
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={activeLink} to="/countries">
-                  Countries
-                </NavLink>
-              </li>
-              <li>
-                <NavLink className={activeLink} to="/searchCountry">
-                  Search Country
-                </NavLink>
-              </li>
+              {!isLoggedIn ? <AuthNav /> : <UserMenu />}
             </ul>
           </nav>
         </Container>

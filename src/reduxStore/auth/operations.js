@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // fgsdgd2@gamil.com
 // 12345678
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: 'https://goit-task-manager.herokuapp.com/',
 });
 
@@ -21,10 +21,31 @@ export const fetchRegisterThunk = createAsyncThunk(
     try {
       const { data } = await instance.post('users/signup', credentials);
       setAuthHeaders(data.token);
-
-      console.log(data);
+      return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
+
+export const fetchLoginThunk = createAsyncThunk(
+  'users/fetchLogin',
+  async (credentials, thunkAPI) => {
+    try {
+      const { data } = await instance.post('users/login', credentials);
+      setAuthHeaders(data.token);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const fetchLogoutThunk = createAsyncThunk('users/fetchLogout', async (_, thunkAPI) => {
+  try {
+    await instance.post('users/logout');
+    clearAuthHeaders();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
