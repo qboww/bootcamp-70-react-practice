@@ -1,47 +1,30 @@
-import clsx from 'clsx';
-import { NavLink } from 'react-router-dom';
-import s from './UserMenu.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUser } from 'reduxStore/auth/selectors';
 import { fetchLogoutThunk } from 'reduxStore/auth/operations';
+import { CustomNavLink } from 'components';
 export const UserMenu = () => {
   const dispatch = useDispatch();
-  const activeLink = ({ isActive }) => {
-    return clsx(isActive && s.active);
-  };
 
   const user = useSelector(selectUser);
   return (
     <>
       <li>
-        <NavLink className={activeLink} to="/images">
-          Images
-        </NavLink>
+        <CustomNavLink path="/images">Images</CustomNavLink>
       </li>
       <li>
-        <NavLink className={activeLink} to="/points">
-          Points
-        </NavLink>
+        <CustomNavLink path="/points">Points</CustomNavLink>
       </li>
       <li>
-        <NavLink className={activeLink} to="/props">
-          Props
-        </NavLink>
+        <CustomNavLink path="/props">Props</CustomNavLink>
       </li>
       <li>
-        <NavLink className={activeLink} to="/todos">
-          Todos
-        </NavLink>
+        <CustomNavLink path="/todos">Todos</CustomNavLink>
       </li>
       <li>
-        <NavLink className={activeLink} to="/countries">
-          Countries
-        </NavLink>
+        <CustomNavLink path="/countries">Countries</CustomNavLink>
       </li>
       <li>
-        <NavLink className={activeLink} to="/searchCountry">
-          Search Country
-        </NavLink>
+        <CustomNavLink path="/searchCountry">Search Country</CustomNavLink>
       </li>
       <li>Welcome, {user.name}</li>
       <li>

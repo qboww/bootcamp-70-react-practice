@@ -49,3 +49,16 @@ export const fetchLogoutThunk = createAsyncThunk('users/fetchLogout', async (_, 
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+export const refreshUserThunk = createAsyncThunk('users/refreshUser', async (_, thunkAPI) => {
+  const { auth } = thunkAPI.getState();
+  if (!auth.token) {
+    return thunkAPI.rejectWithValue('No token');
+  }
+  try {
+    setAuthHeaders(auth.token);
+    const { data } = await instance.get('users/me');
+    return data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.message);
+  }
+});
